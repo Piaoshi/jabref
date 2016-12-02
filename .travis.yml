@@ -21,6 +21,7 @@ before_script:
 
 script:
   - ./gradlew check
+  - ./gradlew fetcherTest
   - ./gradlew databaseTest
   # Prepare integration tests
   - "export DISPLAY=:99.0"
@@ -41,7 +42,7 @@ script:
   - sudo service sshguard stop
   - sudo service ssh stop
   # Integratation tests run in a timeout. Just start them and kill them after 60s
-  - timeout 60 ./gradlew integrationTest --info || true
+  - timeout 60 ./gradlew guiTest --info || true
 
 after_script:
   # enable codecov report
